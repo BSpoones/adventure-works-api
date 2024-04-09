@@ -1,0 +1,5 @@
+mysqlclient=2.2.4
+fastapi
+unicorn
+mysqlclient~=2.2.4
+aiomysql
