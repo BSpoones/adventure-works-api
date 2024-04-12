@@ -1,6 +1,8 @@
-from main import app
+from fastapi import APIRouter
+
+router = APIRouter()
 
 
-@app.get("/put/address/")
+@router.get("/put")
 def put_address():
-    ...
+    return {"address": "Working"}
