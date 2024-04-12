@@ -10,37 +10,18 @@ from util.Repeat import repeat
 logger = logging.getLogger("Database Handler")
 logging.basicConfig(level=logging.DEBUG)
 
+"""
+TODO -> Comments
+"""
+DB_HOST = ""
+DB_USER = ""
+DB_PASSWORD = ""
+DB_DATABASE = ""
+
 
 class DatabaseHandler:
-    @classmethod
-    def create(cls):
-        if any(x is None for x in (
-                cls._get_host(),
-                cls._get_user(),
-                cls._get_db_password(),
-                cls._get_database(),
-        )):
-            raise KeyError("Could not find database credentials in dotenv file!")
-
-        instance = cls()
-        instance.connect()
-        return instance
-
-    @staticmethod
-    def _get_host():
-        return os.getenv("DB_HOST")
-
-    @staticmethod
-    def _get_user():
-        return os.getenv("DB_USER")
-
-    @staticmethod
-    def _get_db_password():
-        return os.getenv("DB_PASSWORD")
-
-    @staticmethod
-    def _get_database():
-        return os.getenv("DB_DATABASE")
+    def __init__(self):
+        self.connect()
 
     @staticmethod
     def with_commit(func):
@@ -57,10 +38,10 @@ class DatabaseHandler:
         """
         if not hasattr(self, "cxn") or not hasattr(self, "cur"):
             self.cxn: Connection = Connect(
-                host=self._get_host(),
-                user=self._get_user(),
-                password=self._get_db_password(),
-                database=self._get_database()
+                host=DB_HOST,
+                user=DB_USER,
+                password=DB_PASSWORD,
+                database=DB_DATABASE
             )
             self.cur: Cursor = self.cxn.cursor(cursorclass=Cursor)
         else:
