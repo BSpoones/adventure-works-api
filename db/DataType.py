@@ -2,6 +2,7 @@ from enum import Enum
 
 import MySQLdb, logging
 from MySQLdb.cursors import Cursor
+
 logger = logging.getLogger(__name__)
 
 
