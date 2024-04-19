@@ -1,9 +1,20 @@
 from fastapi import FastAPI
 
-from endpoint.put.Address import router
+from endpoint.Cart import cart_router
+from endpoint.Customer import customer_router
+from endpoint.Product import product_router
+
 app = FastAPI()
 
-app.include_router(router)
+routers = [
+    cart_router,
+    customer_router,
+    product_router
+]
+
+for router in routers:
+    app.include_router(router)
+
 
 @app.get("/")
 def test():

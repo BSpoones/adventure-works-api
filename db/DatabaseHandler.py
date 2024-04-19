@@ -1,5 +1,4 @@
 import logging
-import os
 from DataType import DataType
 
 from MySQLdb.cursors import Cursor
@@ -186,7 +185,8 @@ class DatabaseHandler:
             table: str,
             cols: list[str] | set[str],
             data: tuple,
-            with_commit: bool = True):
+            with_commit: bool = True
+    ):
         """
         Inserts data into the database
 
@@ -213,8 +213,6 @@ class DatabaseHandler:
 
         Args:
             command (str): SQL command
-            retries_left (int, optional): Amount of times the execute can run before it gives up. Defaults to MAX_RETRIES.
-
         Raises:
             LookupError: If the max retries limit has exceeded
         """

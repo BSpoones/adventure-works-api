@@ -1,9 +1,9 @@
 from functools import wraps
 from typing import Callable
 from random import random as rand_float
-import logging, asyncio, time
+import logging, time
 
-logger = logging.getLogger("AsyncRepeat")
+logger = logging.getLogger("Repeat")
 
 
 def repeat(retries: int = 3, delay_secs: float = 0.5, max_delay_secs: float | None = None):
