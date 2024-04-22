@@ -3,21 +3,13 @@ from fastapi import APIRouter
 customer_router = APIRouter(prefix="/api/customer")
 
 
-@customer_router.get("/")
-def get_customer():
+# Get customer purchase history
+@customer_router.get("/{id}/purchasehistory")
+def get_customer_purchase_history():
     ...
 
 
-@customer_router.put("/address")
-def put_address():
-    ...
-
-
-@customer_router.put("/password")
-def put_password():
-    ...
-
-
-@customer_router.delete("/")
-def delete_customer():
+# Edit customer details
+@customer_router.put("/{id}/edit")
+def put_customer_details():
     ...
